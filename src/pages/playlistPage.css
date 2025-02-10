@@ -1,0 +1,167 @@
+.playlist-container {
+  height: auto; /* Let it take natural height */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+}
+
+.playlist-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: white;
+  font-weight: 700;
+}
+
+.playlist-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+  height: auto; /* Remove fixed height */
+}
+
+.playlists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.playlist-item {
+  background: #282828;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.playlist-card {
+  background: #282828;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.playlist-item:hover {
+  background: #383838;
+  transform: translateY(-4px);
+}
+
+.playlist-card:hover {
+  background: #333333;
+  transform: translateY(-5px);
+}
+
+.playlist-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.playlist-image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: 16px;
+}
+
+.playlist-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.playlist-card:hover .playlist-overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  color: #1DB954;
+  font-size: 3rem;
+}
+
+.playlist-info {
+  margin-top: 8px;
+  text-align: left;
+}
+
+.playlist-name {
+  font-weight: bold;
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist-tracks {
+  color: #b3b3b3;
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 40px;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1db954;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+.error-container {
+  text-align: center;
+  padding: 40px;
+  color: #ff5555;
+}
+
+.error-container button {
+  background: #1db954;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.no-playlists {
+  text-align: center;
+  color: #b3b3b3;
+  padding: 40px;
+}

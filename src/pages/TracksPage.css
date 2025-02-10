@@ -1,0 +1,320 @@
+.tracks-container {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px; /* Reduced from 40px */
+}
+
+.tracks-header {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.playlist-header {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.back-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.playlist-cover {
+  width: 180px; /* Reduced from 230px */
+  height: 180px; /* Reduced from 230px */
+  object-fit: cover;
+  margin-right: 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.playlist-info {
+  padding-bottom: 10px;
+}
+
+.playlist-info h1 {
+  font-size: 2.5rem; /* Reduced from 3rem */
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.playlist-info p {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+.tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 800px;
+  margin: 30px auto 0;
+  padding: 0 20px;
+  margin-bottom: 20px; /* Reduced from 40px */
+}
+
+.track-item {
+  display: grid;
+  grid-template-columns: 50px 60px 1fr 80px 50px; /* Adjusted grid column width back to original */
+  align-items: center;
+  padding: 12px 20px; /* Slightly increased padding */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  height: 60px; /* Fixed height for consistent alignment */
+}
+
+.track-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+/* Base styles for all buttons */
+.tracks-list .track-item .track-play-button {
+  width: 45px;
+  height: 45px;
+  margin-left: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #1db954;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Override base svg size */
+.tracks-list .track-item .track-play-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Make play button larger when PlayIcon is present */
+.tracks-list .track-item .track-play-button:has(svg[data-testid="play-icon"]) {
+  width: 45px !important;
+  height: 45px !important;
+}
+
+.tracks-list .track-item .track-play-button:has(svg[data-testid="play-icon"]) svg {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Keep spinner and download icon at original size */
+.tracks-list .track-item .track-play-button .spin,
+.tracks-list .track-item .track-play-button .download-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.tracks-list .track-item .track-play-button:hover {
+  opacity: 1;
+}
+
+.track-number {
+  color: #b3b3b3;
+}
+
+.track-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 16px;
+  min-width: 0; /* Helps with text overflow */
+}
+
+.track-details {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.track-name {
+  color: #ffffff;
+  font-size: 1.1rem; /* Slightly larger font */
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  margin: 4px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-duration {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  margin-left: auto;
+  width: 45px;
+  text-align: right;
+}
+
+.download-btn {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.download-btn.loading {
+  color: #1db954;
+  cursor: not-allowed;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin-left: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+  color: rgba(0, 204, 204, 1);
+}
+
+.action-btn.loading {
+  color: rgba(0, 204, 204, 0.8);
+  cursor: not-allowed;
+}
+
+.play-icon-card, .download-icon {
+  font-size: 1em;
+}
+
+.play-btn {
+  color: rgba(0, 204, 204, 0.85); /* Matches the cyan from the gradient */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.download-btn:hover {
+  color: rgba(0, 204, 204, 1); /* Changed to cyan */
+}
+
+.play-btn:hover {
+  color: rgba(0, 204, 204, 1);
+}
+
+.play-icon-card {
+  font-size: 0.9em;
+}
+
+/* Reset action button to original size */
+.action-button {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-left: auto; /* Centers the button in its grid column */
+}
+
+/* Keep download icon at original size */
+.action-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Make only play icon larger */
+.play-icon {
+  font-size: 1.8em;
+  color: rgba(0, 204, 204, 0.85); /* Changed to cyan */
+}
+
+/* Keep spinner size consistent with download icon */
+.action-button.loading svg {
+  width: 18px;
+  height: 18px;
+}
+
+.action-button:hover {
+  color: rgba(0, 204, 204, 1); /* Changed to cyan */
+  transform: scale(1.1);
+}
+
+.action-button.loading {
+  color: rgba(0, 204, 204, 0.8); /* Changed to cyan */
+  cursor: not-allowed;
+}
+
+.tracks-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  padding: 15px 0; /* Reduced from 20px */
+  margin-top: 10px; /* Reduced from 20px */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 50px; /* Reduced from 60px */
+}

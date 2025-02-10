@@ -1,0 +1,133 @@
+.music-player {
+  width: 300px;
+  height: calc(100vh - 40px); /* Adjust height to account for top margin */
+  background: linear-gradient(160deg, rgba(75, 0, 130, 0.95), rgba(0, 204, 204, 0.89));
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  /* Added top margin to align with playlist header */
+  backdrop-filter: blur(8px);
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.cover-art {
+  width: 200px;
+  height: 200px;
+  margin-top: 60px; 
+  margin-bottom: 20px;
+  background-color: #282828;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.track-info {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.track-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.artist-name {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.play-btn {
+  background: #1db954;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.play-btn:hover {
+  background: #1ed760;
+  transform: scale(1.1);
+}
+
+.progress-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  margin: 20px 0;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+  transition: height 0.2s ease;
+}
+
+.progress-bar:hover {
+  height: 6px;
+}
+
+.progress-bar:hover .progress-fill {
+  background: rgba(0, 204, 204, 1);
+}
+
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: rgba(0, 204, 204, 0.8);
+  border-radius: 2px;
+  transition: width 0.1s linear, background-color 0.2s ease;
+}
+
+.time {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  min-width: 40px;
+  text-align: center;
+}

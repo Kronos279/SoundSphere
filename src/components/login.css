@@ -1,0 +1,185 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    min-height: 100vh;
+    width: 100vw; /* Changed to viewport width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0; /* Added margin 0 */
+    padding: 0; /* Added padding 0 */
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.login-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-content h1 {
+    color: #ffffff;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-weight: 800;
+}
+
+.tagline {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    background: linear-gradient(70deg, #7af2ff, #b050ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: #E0E0E0;
+    max-width: 600px;
+    line-height: 1.8;
+    margin: 1.5rem auto 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.login-button {
+    background: linear-gradient(45deg, #1DB954, #4CAF50);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.login-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5);
+    background: linear-gradient(45deg, #4CAF50, #1DB954);
+}
+
+.spotify-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.slide-in-top {
+    animation: slideInTop 1s ease-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+.slide-in-right {
+    animation: slideInRight 1s ease-out 0.6s;
+    animation-fill-mode: both;
+}
+
+.bounce {
+    animation: bounce 2s ease infinite;
+    animation-delay: 1s;
+}

@@ -1,0 +1,141 @@
+.home-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(75, 0, 130, 1) 0%, rgba(0, 204, 204, 0.8) 100%);
+}
+
+/* Update the content container styles to hide the scrollbar when not needed */
+.content-container {
+  position: relative;
+  margin-left: 300px;
+  width: calc(100% - 300px);
+  height: calc(100vh - 50px); /* Set height to viewport minus navbar */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow-y: auto;    /* Changed from visible to auto */
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+/* Optional: Add custom scrollbar styling */
+.content-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.content-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.content-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.content-container h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #121212;
+  overflow: hidden; /* Prevent scrolling at root level */
+}
+
+.main-content {
+  display: flex;
+  position: relative;
+  height: calc(100vh - 50px); /* Subtract navbar height */
+  margin-top: 50px; /* Align content directly below navbar */
+}
+
+/* Music Player Styles */
+.music-player {
+  position: fixed;
+  width: 300px; /* Fixed width for music player */
+  height: calc(100vh - 50px); /* Subtract navbar height for consistency */
+  background-color: #181818;
+  border-right: 1px solid #282828;
+  left: 0;
+  top: 50px; /* Positioning starting below navbar */
+  box-sizing: border-box;
+  z-index: 900;
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px; /* Use a consistent navbar height */
+  background-color: #181818;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar .app-name {
+  color: #1db954;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+/* Optional: Profile and Logout styles if not already defined */
+.navbar .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar .profile-picture {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar .profile-picture-placeholder {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #282828;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.navbar .username {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.navbar .logout-button {
+  background-color: transparent;
+  border: 1px solid #1db954;
+  color: #1db954;
+  padding: 4px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-left: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.navbar .logout-button:hover {
+  background-color: #1db954;
+  color: #fff;
+}

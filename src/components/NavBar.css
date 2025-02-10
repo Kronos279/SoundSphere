@@ -1,0 +1,97 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px; /* Increased padding */
+  height: 80px; /* Increased from default */
+  background: linear-gradient(90deg, rgba(75, 0, 130, 0.95), rgba(0, 204, 204, 0.85));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left h1 {
+  color: white;
+  font-size: 2.2rem; /* Increased font size */
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+  margin-left: 20px; /* Added margin */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #282828;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-picture-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #282828;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.username {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 12px;
+}
+
+.welcome-text {
+  color: white;
+  font-size: 1.1rem; /* Increased from default */
+  font-weight: 500;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: 1px solid #4f8fa4;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
