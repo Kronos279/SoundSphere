@@ -165,3 +165,93 @@
   color: #b3b3b3;
   padding: 40px;
 }
+
+/* Responsive styles for tablet and mobile screens */
+@media only screen and (max-width: 768px) {
+  .playlist-container {
+    padding: 10px;
+    padding-bottom: 90px; /* Ensure that any bottom padding accommodates the MusicPlayer */
+  }
+  
+  .playlist-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .playlists-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .playlist-card {
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 400px;
+    cursor: pointer;
+  }
+  
+  .playlist-image-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .playlist-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .playlist-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .playlist-card:hover .playlist-overlay {
+    opacity: 1;
+  }
+  
+  .playlist-info {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .playlist-name {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .playlist-tracks {
+    font-size: 0.9rem;
+    color: #666;
+  }
+}
+
+/* Additional tweaks for small mobile screens */
+@media only screen and (max-width: 480px) {
+  .playlist-title {
+    font-size: 1.3rem;
+  }
+  
+  .playlist-card {
+    padding: 8px;
+  }
+  
+  .playlist-name {
+    font-size: 1.1rem;
+  }
+  
+  .playlist-tracks {
+    font-size: 0.8rem;
+  }
+}

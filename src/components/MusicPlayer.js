@@ -15,17 +15,14 @@ const MusicPlayer = () => {
   const { currentTrack, isPlaying, progress, duration, playTrack, seekTo } = usePlayer();
 
   const handleProgressClick = (e) => {
-    if (!duration) return; // Don't handle clicks if no track is loaded
-
+    if (!duration) return;
     const progressBar = e.currentTarget;
     const rect = progressBar.getBoundingClientRect();
     const clickPosition = e.clientX - rect.left;
     const clickPercentage = clickPosition / rect.width;
     const newTime = clickPercentage * duration;
-
-    e.preventDefault(); // Prevent any default behavior
-    e.stopPropagation(); // Stop event bubbling
-    
+    e.preventDefault();
+    e.stopPropagation();
     seekTo(newTime);
   };
 
@@ -38,39 +35,30 @@ const MusicPlayer = () => {
         />
       </div>
       
-      <div className="track-info">
-        <h3 className="track-title">{currentTrack?.name || "No track selected"}</h3>
-        <p className="artist-name">{currentTrack?.artists?.map(artist => artist.name).join(", ") || "Unknown artist"}</p>
-      </div>
-
-      <div className="progress-container">
-        <span className="time">{formatTime(progress)}</span>
-        <div 
-          className="progress-bar"
-          onClick={handleProgressClick}
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={duration}
-          aria-valuenow={progress}
-        >
-          <div 
-            className="progress-fill"
-            style={{ width: `${(progress / duration) * 100}%` }}
-          />
+      {/* New container for right-side elements */}
+      <div className="player-right">
+        <div className="progress-container" onClick={handleProgressClick} role="progressbar" aria-valuemin={0} aria-valuemax={duration} aria-valuenow={progress}>
+          <span className="time">{formatTime(progress)}</span>
+          <div className="progress-bar">
+            <div 
+              className="progress-fill"
+              style={{ width: `${(progress / duration) * 100}%` }}
+            />
+          </div>
+          <span className="time">{formatTime(duration)}</span>
         </div>
-        <span className="time">{formatTime(duration)}</span>
-      </div>
-
-      <div className="controls">
-        <button className="control-btn">
-          <FaStepBackward />
-        </button>
-        <button className="control-btn play-btn" onClick={() => currentTrack && playTrack(currentTrack)}>
-          {isPlaying ? <FaPause /> : <FaPlay />}
-        </button>
-        <button className="control-btn">
-          <FaStepForward />
-        </button>
+        
+        <div className="controls">
+          <button className="control-btn">
+            <FaStepBackward />
+          </button>
+          <button className="control-btn play-btn" onClick={() => currentTrack && playTrack(currentTrack)}>
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </button>
+          <button className="control-btn">
+            <FaStepForward />
+          </button>
+        </div>
       </div>
     </div>
   );

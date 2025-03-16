@@ -13,7 +13,7 @@ const PlaylistPage = () => {
     const fetchPlaylists = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3000/api/playlists', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/playlists`, {
           credentials: 'include'
         });
 

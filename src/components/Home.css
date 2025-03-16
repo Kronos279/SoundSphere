@@ -56,6 +56,7 @@
   position: relative;
   height: calc(100vh - 50px); /* Subtract navbar height */
   margin-top: 50px; /* Align content directly below navbar */
+  flex-direction: row; /* Current desktop layout styles */
 }
 
 /* Music Player Styles */
@@ -138,4 +139,69 @@
 .navbar .logout-button:hover {
   background-color: #1db954;
   color: #fff;
+}
+
+/* Mobile adjustments: move MusicPlayer to bottom */
+@media only screen and (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  /* Adjust content container: remove left margin & full width; add bottom margin for MusicPlayer */
+  .content-container {
+    order: 1;
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 120px;  /* Increased bottom margin to clear the MusicPlayer */
+    padding-bottom: 100px; /* Space for the music player */
+  }
+  
+  /* Mobile MusicPlayer pinned at the bottom with reduced height */
+  .music-player {
+    order: 2;
+    width: 100%;
+    height: 100px;  /* Consistent with the mobile MusicPlayer layout */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #181818;
+    border-top: 1px solid #282828;
+  }
+
+  .playlist-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .playlist-cover {
+    width: 140px;  /* Reduced size */
+    height: 140px; /* Reduced size */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .playlist-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .playlist-info h1 {
+    font-size: 2rem; /* Adjusted font size for mobile */
+    margin: 10px 0 8px; /* New line with proper spacing */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background-color: #181818;
+    border-top: 1px solid #282828;
+  }
 }

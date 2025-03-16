@@ -85,9 +85,10 @@
   margin-bottom: 20px; /* Reduced from 40px */
 }
 
+/* Base styles for track items */
 .track-item {
   display: grid;
-  grid-template-columns: 50px 60px 1fr 80px 50px; /* Adjusted grid column width back to original */
+  grid-template-columns: 50px 60px minmax(0, 1fr) 80px 50px; /* Adjusted grid column width */
   align-items: center;
   padding: 12px 20px; /* Slightly increased padding */
   background: rgba(255, 255, 255, 0.1);
@@ -100,6 +101,64 @@
 .track-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateX(5px);
+}
+
+.track-number {
+  color: #b3b3b3;
+}
+
+.track-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 16px;
+  min-width: 0; /* Helps with text overflow */
+  width: 100%; /* Add explicit width */
+  flex: 1; /* Allow flex growing */
+  overflow: visible; /* Allow children to display fully */
+}
+
+.track-details {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.track-name {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.track-artist {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  margin: 4px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-duration {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  margin-left: auto;
+  width: 45px;
+  text-align: right;
 }
 
 /* Base styles for all buttons */
@@ -145,57 +204,6 @@
 
 .tracks-list .track-item .track-play-button:hover {
   opacity: 1;
-}
-
-.track-number {
-  color: #b3b3b3;
-}
-
-.track-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  margin-right: 16px;
-}
-
-.track-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 16px;
-  min-width: 0; /* Helps with text overflow */
-}
-
-.track-details {
-  flex-grow: 1;
-  text-align: left;
-}
-
-.track-name {
-  color: #ffffff;
-  font-size: 1.1rem; /* Slightly larger font */
-  font-weight: 500;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-artist {
-  color: #b3b3b3;
-  font-size: 0.9rem;
-  margin: 4px 0 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-duration {
-  color: #b3b3b3;
-  font-size: 0.9rem;
-  margin-left: auto;
-  width: 45px;
-  text-align: right;
 }
 
 .download-btn {
@@ -318,3 +326,107 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   min-height: 50px; /* Reduced from 60px */
 }
+
+
+/* Force debugging outlines with high specificity */
+@media only screen and (max-width: 768px) {
+  .tracks-list .track-item .track-info {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    margin-left: 8px !important;  /* Reduced from 16px */
+    min-width: 0 !important;
+    width: 100% !important;
+    flex: 1 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    z-index: 1000 !important;
+  }
+  
+  .tracks-list .track-item .track-info .track-name {
+    display: block !important;
+    width: 100% !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    position: relative !important;
+    z-index: 2000 !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  /* Adjust grid columns if needed */
+  .tracks-list .track-item {
+    grid-template-columns: 40px 40px minmax(0, 1fr) 50px 35px;
+    padding: 8px 12px; /* Reduce overall horizontal padding */
+  }
+  
+  /* Ensure the track number stays flush to the left */
+  .tracks-list .track-item .track-number {
+    width: 30px !important; /* Reduced width for mobile view */
+    text-align: left;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  /* Reduce margin between the track number and the cover image */
+  .tracks-list .track-item .track-image {
+    margin-right: 0px !important;  /* Reduced from 16px */
+    margin-left: 0px !important;
+  }
+
+  /* Remove extra left margin from track-info so text uses available space */
+  .tracks-list  .track-info {
+    margin-left: 0 !important;  /* Removed extra margin */
+    padding: 0 4px;
+    min-width: 0 !important;
+    width: 100% !important;
+    flex: 1 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    z-index: 1000 !important;
+  }
+  .track-info {
+    margin-left: 4px !important;  /* Removed extra margin */
+    padding: 0 4px;
+    min-width: 0 !important;
+    width: 100% !important;
+    flex: 1 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Keep the track-name as-is for truncation */
+  .tracks-list .track-item .track-info .track-name {
+    display: block !important;
+    width: 100% !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    position: relative !important;
+    z-index: 2000 !important;
+  }
+}
+
+

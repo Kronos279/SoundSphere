@@ -5,10 +5,10 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  
+
   const checkAuthStatus = async () => {
     try {
-      const statusResponse = await fetch("http://localhost:3000/auth/status", {
+      const statusResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/status`, {
         credentials: "include",
       });
 
@@ -41,29 +41,29 @@ const AuthProvider = ({ children }) => {
 
   const login = async () => {
     try {
-      window.location.href = 'http://localhost:3000/auth/spotify';
+      window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/spotify`;
     } catch (error) {
-      console.error('Login error:', error);
+      console.error("Login error:", error);
       setIsAuthenticated(false);
     }
   };
-  
+
   const handleCallback = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const encodedData = urlParams.get('data');
-    
+    const encodedData = urlParams.get("data");
+
     if (encodedData) {
       try {
         const userData = JSON.parse(decodeURIComponent(encodedData));
         setUser({
-          displayName: userData.displayName || userData._json?.display_name,  // Try both locations
+          displayName: userData.displayName || userData._json?.display_name, // Try both locations
           id: userData.id,
           email: userData.email
         });
         setIsAuthenticated(true);
-        window.location.href = '/';
+        window.location.href = "/";
       } catch (error) {
-        console.error('Error parsing user data:', error);
+        console.error("Error parsing user data:", error);
         setIsAuthenticated(false);
       }
     }
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const response = await fetch("http://localhost:3000/logout", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/logout`, {
         method: "GET",
         credentials: "include",
       });
@@ -83,17 +83,16 @@ const AuthProvider = ({ children }) => {
       const data = await response.json();
       console.log(data.message);
 
-      // Clear user data and redirect to localhost:3000/
+      // Clear user data and redirect to frontend URL
       setIsAuthenticated(false);
       setUser(null);
-      window.location.href = 'http://localhost:3001/';
+      window.location.href = process.env.REACT_APP_FRONTEND_URL;
       
     } catch (err) {
       console.error("Error logging out:", err);
-      // Still clear user data and redirect even if there's an error
       setIsAuthenticated(false);
       setUser(null);
-      window.location.href = 'http://localhost:3001/';
+      window.location.href = process.env.REACT_APP_FRONTEND_URL;
     }
   };
 

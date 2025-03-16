@@ -25,12 +25,14 @@ const TracksPage = () => {
   const [existingTracks, setExistingTracks] = useState(new Set());
   const [playlistDetails, setPlaylistDetails] = useState(null);  // Added state
 
+  const API_URL = process.env.REACT_APP_BACKEND_URL; // ✅ Use environment variable
+
   useEffect(() => {
     const fetchPlaylistData = async () => {
       try {
         setLoading(true);
         // Fetch playlist details including tracks
-        const response = await fetch(`http://localhost:3000/api/playlists/${playlistId}`, {
+        const response = await fetch(`${API_URL}/api/playlists/${playlistId}`, {
           credentials: 'include'
         });
 
@@ -47,7 +49,7 @@ const TracksPage = () => {
           .filter(track => track.track)
           .map(track => track.track.id);
 
-        const checkResponse = await fetch('http://localhost:3000/api/tracks/check-tracks', {
+        const checkResponse = await fetch(`${API_URL}/api/tracks/check-tracks`, {
           method: 'POST',
           credentials: 'include',
           headers: {
@@ -69,7 +71,7 @@ const TracksPage = () => {
     };
 
     fetchPlaylistData();
-  }, [playlistId]);
+  }, [playlistId, API_URL]);
 
   const handleDownload = async (trackId, trackName) => {
     try {
@@ -79,7 +81,7 @@ const TracksPage = () => {
       const artistNames = track.track.artists.map(artist => artist.name).join(", ");
       const fullTrackName = `${trackName} - ${artistNames}`;
       
-      const response = await fetch('http://localhost:3000/api/tracks/test-download', {
+      const response = await fetch(`${API_URL}/api/tracks/test-download`, {
         method: 'POST',
         credentials: 'include',
         headers: {

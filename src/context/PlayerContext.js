@@ -7,10 +7,10 @@ export const PlayerProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  // Replace state for isSeeking with a ref
   const isSeekingRef = useRef(false);
 
   const audioRef = useRef(new Audio());
+  const API_URL = process.env.REACT_APP_BACKEND_URL; // ✅ Use the correct env variable
 
   // Setup audio event listeners once
   useEffect(() => {
@@ -22,7 +22,6 @@ export const PlayerProvider = ({ children }) => {
     };
 
     const handleTimeUpdate = () => {
-      // Only update progress if we're not actively seeking.
       if (!isSeekingRef.current) {
         setProgress(audio.currentTime);
       }
@@ -43,7 +42,7 @@ export const PlayerProvider = ({ children }) => {
       audio.removeEventListener('ended', handleEnded);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Run only once
+  }, []);
 
   const seekTo = (time) => {
     const audio = audioRef.current;
@@ -54,7 +53,6 @@ export const PlayerProvider = ({ children }) => {
       const newTime = Math.min(Math.max(0, time), duration);
       console.log('Seeking to:', newTime);
       
-      // Create a promise to handle the seeking operation
       const seekPromise = new Promise((resolve) => {
         const handleSeeked = () => {
           audio.removeEventListener('seeked', handleSeeked);
@@ -64,7 +62,6 @@ export const PlayerProvider = ({ children }) => {
         audio.currentTime = newTime;
       });
 
-      // Wait for seek to complete before resuming playback
       seekPromise.then(() => {
         setProgress(newTime);
         if (isPlaying) {
@@ -99,11 +96,10 @@ export const PlayerProvider = ({ children }) => {
 
     // Load new track
     console.log('Loading new track:', track.id);
-    audio.src = `http://localhost:3000/api/tracks/stream/${track.id}`;
+    audio.src = `${API_URL}/api/tracks/stream/${track.id}`; // ✅ Updated URL with env variable
     setCurrentTrack(track);
     setProgress(0);
 
-    // Play new track
     audio.play()
       .then(() => {
         console.log('Playing new track:', track.id);
